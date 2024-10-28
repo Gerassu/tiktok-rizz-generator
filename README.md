@@ -8,7 +8,7 @@ A simple TikTok rizz video generator built with JavaScript/Node.js
 ## Installation
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/tiktok-rizz-generator.git
+git clone https://github.com/gerassu/tiktok-rizz-generator.git
 
 # Navigate to project directory
 cd tiktok-rizz-generator
