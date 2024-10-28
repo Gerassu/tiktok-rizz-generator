@@ -3,6 +3,13 @@
 ![Status](https://img.shields.io/badge/Status-In%20Development-yellow)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
+```
+Currently using:
+Frontend: React+tailwind
+Backend: FastAPI,Redis,JWT,PostgreSQL
+
+```
+
 A simple TikTok rizz video generator built with JavaScript/Node.js
 
 ## Installation
