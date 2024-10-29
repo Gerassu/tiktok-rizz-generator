@@ -3,7 +3,7 @@
 ![Status](https://img.shields.io/badge/Status-In%20Development-yellow)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
-A simple TikTok rizz video generator built with JavaScript/Node.js
+A simple TikTok rizz video generator built with PY/JavaScript/Node.js
 
 ## Installation
 ```bash
