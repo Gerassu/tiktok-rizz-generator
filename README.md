@@ -24,7 +24,7 @@ node requirements.js
 ```
 
 ## Features
-- 🎥 Video selection from multiple soruces
+- 🎥 Video selection from multiple sources
 - 💬 Custom text overlay support
 - 🎵 Background music integration
 - ⚡ Fast processing
