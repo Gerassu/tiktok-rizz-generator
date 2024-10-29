@@ -31,22 +31,7 @@ node requirements.js
 - 🎨 Customizable templates
 
 ## Navigation
-1. TBD
-    1. TBD
-2. TBD
-    1. TBD
-3. TBD
-    1. TBD
-4. TBD
-    1. TBD
-    2. TBD
-    3. TBD
-5. TBD
-    1. TBD
-    2. TBD
-6. TBD
-    1. TBD
-    2. TBD
+TBD
 
 ## Contributing
 We welcome contributions to the TikTok Rizz Generator! Here's how you can help:
