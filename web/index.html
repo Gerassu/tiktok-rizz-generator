@@ -1,1 +1,51 @@
-ciao falbo
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rizz Manager v0.1.13</title>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script src="handling.js"></script>
+</head>
+<body>
+    <div class="console-container">
+        <div class="controls-section">
+            <div class="control-group">
+                <label for="videoLength">Video Length (seconds)</label>
+                <input type="number" id="videoLength" min="1" value="60">
+            </div>
+            <div class="control-group">
+                <label for="videoWidth">Video Width (px)</label>
+                <input type="number" id="videoWidth" min="1" value="1920">
+            </div>
+            <div class="control-group">
+                <label for="videoHeight">Video Height (px)</label>
+                <input type="number" id="videoHeight" min="1" value="1080">
+            </div>
+            <div class="control-group">
+                <label>Subtitle File</label>
+                <div class="file-upload" id="subtitleUpload">
+                    Drop subtitle file here or click to upload
+                </div>
+            </div>
+            <div class="control-group">
+                <label>Audio File</label>
+                <div class="file-upload" id="audioUpload">
+                    Drop audio file here or click to upload
+                </div>
+            </div>
+            <div class="control-group">
+                <button id="generateBtn">Generate Video</button>
+            </div>
+        </div>
+
+        <div class="preview-section">
+            <iframe class="preview-frame" id="videoPreview"></iframe>
+        </div>
+
+        <div class="status-bar" id="statusBar">
+            Ready to process...
+        </div>
+    </div>
+</body>
+</html>

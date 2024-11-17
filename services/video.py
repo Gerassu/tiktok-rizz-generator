@@ -8,14 +8,14 @@ import random as rd
 class VideoProcessor:
     #def init
     def __init__(self, 
-                 placeholder_dir: str = "./UPLOAD/static/placeholder/videos", 
-                 output_dir: str = "./UPLOAD/static/processed"):
+                 placeholder_dir: str = "static/placeholder/videos", 
+                 output_dir: str = "output/videos"):
         
         self.placeholder_dir = Path(placeholder_dir)
         self.output_dir = Path(output_dir)
    
     def getDuration(self, video_path: str) -> float:
-
+        print(video_path)
         probe = ffmpeg.probe(video_path)
         #video_info = next(s for s in probe["streams"] if s["codec_type"] == "video")
 
@@ -44,7 +44,6 @@ class VideoProcessor:
 
             stream = ffmpeg.concat(filtered, in_audio, v=1, a=1)
             stream = ffmpeg.output(stream, f"{output_path}")
-
             stream = stream.global_args('-loglevel', 'warning')
             ffmpeg.run(stream, overwrite_output=True)
 
@@ -76,23 +75,3 @@ class VideoProcessor:
         
         except ffmpeg.Error:
             return {"valid" : False}
-
-processor = VideoProcessor()
-
-available_videos = processor.list_placeholder_videos()
-print(f"available videos in {processor.placeholder_dir}: {available_videos}")
-
-with open("./UPLOAD/audio.mp3", "rb") as f:
-    audio_data = f.read()
-
-get_random = rd.randint(1,processor.get_placeholder_count())
-
-file_format = f"./UPLOAD/static/placeholder/videos/placeholder_{get_random}.mp4"
-print(file_format)
-print(f"placeholder_{get_random}.mp4 duration is {processor.getDuration(file_format)} seconds")
-
-output_path = processor.process_video(f"placeholder_{get_random}.mp4", audio_data, get_random)
-print(f"processed video saved to {output_path}")
-
-
-#output to path

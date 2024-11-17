@@ -3,7 +3,7 @@
 ![Status](https://img.shields.io/badge/Status-In%20Development-yellow)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
-A simple TikTok rizz video generator built with PY/JavaScript/Node.js
+A simple TikTok rizz video generator built with JavaScript/Node.js
 
 ## Installation
 ```bash
@@ -24,14 +24,29 @@ node requirements.js
 ```
 
 ## Features
-- 🎥 Video selection from multiple sources
+- 🎥 Automated video generation
 - 💬 Custom text overlay support
 - 🎵 Background music integration
 - ⚡ Fast processing
 - 🎨 Customizable templates
 
 ## Navigation
-TBD
+1. TBD
+    1. TBD
+2. TBD
+    1. TBD
+3. TBD
+    1. TBD
+4. TBD
+    1. TBD
+    2. TBD
+    3. TBD
+5. TBD
+    1. TBD
+    2. TBD
+6. TBD
+    1. TBD
+    2. TBD
 
 ## Contributing
 We welcome contributions to the TikTok Rizz Generator! Here's how you can help:
