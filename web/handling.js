@@ -91,37 +91,31 @@ class VideoConsole {
                 this.updateStatus('Video generated successfully!');
 
                 // generate video from tuple
-    
-                const videoElement = document.createElement("video");
-                videoElement.controls = false;
-                videoElement.style.width = "100%";
-                videoElement.style.height = "100%";
-    
+                const reader = new FileReader();
+                console.log(data.video_data.content)
                 const videoBlob = this.base64ToBlob(
                     data.video_data.content,
-                    "video/mp4;base64"
+                    "video/mp4"
                 );
 
-                console.log(videoBlob)
-                this.videoPath = data.video_data.path
 
+                const VideoUrl = URL.createObjectURL(videoBlob)
+                const videoElement = document.getElementById("videoPlayer");;
+                videoElement.src = VideoUrl;
 
-                const videoUrl = URL.createObjectURL(videoBlob);
+                videoElement.onload = function (){
+                    URL.revokeObjectURL(videoBlob);
+                }
 
+                reader.readAsDataURL(videoBlob)
+
+                const downloadLink = document.createElement('a');
+                downloadLink.href = VideoUrl;
+                downloadLink.download = 'test.mp4';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
                 
-                console.log(videoUrl)
-                videoElement.src = videoUrl
-    
-                const pewcontainer = this.elements.videoPreview.parentElement;
-                pewcontainer.removeChild(this.elements.videoPreview);
-                pewcontainer.appendChild(videoElement);
-                this.elements.videoPreview = videoElement
-    
-    
-   
-    
-    
-                this.elements.videoPreview.src = data.videoUrl;
+
             } else {
                 throw new Error(data.message || "uknown error occured")
             }
@@ -132,15 +126,16 @@ class VideoConsole {
     }
 
     base64ToBlob(base64, mimetype) {
-        const byteCharacter = atob(base64)
-        const byteNumbers = new Array(byteCharacter.length);
+        const byteCharacters = atob(base64);
 
-        for(let i = 0; i < byteCharacter.length; i++){
-            byteNumbers[1] = byteCharacter.charCodeAt(i)
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
         }
 
         const byteArray = new Uint8Array(byteNumbers);
-        return new Blob([byteArray], { type: mimetype });
+
+        return new Blob([byteArray], {type: mimetype});
 
     }
 
