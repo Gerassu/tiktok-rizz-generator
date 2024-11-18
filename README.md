@@ -3,7 +3,7 @@
 ![Status](https://img.shields.io/badge/Status-In%20Development-yellow)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
-A simple TikTok rizz video generator built with JavaScript/Node.js
+A simple TikTok rizz video generator built with Python/Javascript
 
 ## Installation
 ```bash
@@ -18,17 +18,12 @@ npm install
 ```
 
 ## Requirements
-Run the following command in the project's requirements directory:
-```bash
-node requirements.js
-```
+Will be added.
 
 ## Features
 - 🎥 Automated video generation
 - 💬 Custom text overlay support
-- 🎵 Background music integration
 - ⚡ Fast processing
-- 🎨 Customizable templates
 
 ## Navigation
 1. TBD
