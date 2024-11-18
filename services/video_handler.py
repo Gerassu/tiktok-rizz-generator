@@ -34,7 +34,7 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://192.168.1.33"],  # Adjust this to match your frontend URL
+    allow_origins=["http://mycoolwebsite.com"],  # Adjust this to match your frontend URL
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
