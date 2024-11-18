@@ -1,3 +1,5 @@
+![Current FrontEnd Interface](https://github.com/user-attachments/assets/93b8044d-14bc-48f8-b157-1c38a9979d71)
+
 # TikTok Rizz Generator
 
 ![Status](https://img.shields.io/badge/Status-In%20Development-yellow)
