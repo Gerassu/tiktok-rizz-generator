@@ -108,3 +108,11 @@ button:hover {
     font-size: 0.9em;
     color: var(--color-light);
 }
+
+.videoManager {
+    max-width: 640px;
+    max-height: 360px;
+    border-radius: 4px;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+
+}
