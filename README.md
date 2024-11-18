@@ -11,7 +11,6 @@ Current working Frontend interface
 
 <img src="https://github.com/user-attachments/assets/93b8044d-14bc-48f8-b157-1c38a9979d71" width="640" height="360"></img>
 
-
 ## Installation
 ```bash
 # Clone the repository
