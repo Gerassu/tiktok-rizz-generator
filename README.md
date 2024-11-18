@@ -5,6 +5,8 @@
 ![Status](https://img.shields.io/badge/Status-In%20Development-yellow)
 ![License](https://img.shields.io/badge/License-MIT-blue)
 
+![Try me Out!](https://tiktok-rizz-generator.vercel.app/)
+
 A simple TikTok rizz video generator built with Python/Javascript
 
 Current working Frontend interface
