@@ -43,7 +43,7 @@ class VideoProcessor:
 
     # Processes new video using random placeholder video
 
-    def process_video(self, video_name: str, audio_data: bytes, get_random: int) -> str:
+    def process_video(self, video_name: str, audio_data: bytes, get_random: int, vduration: int, height: int, width: int) -> str:
 
         # Create temporary audio to use with ffmpeg
 
@@ -68,12 +68,31 @@ class VideoProcessor:
             audio_duration = float(audio_probe["format"]["duration"])
 
             in_audio= ffmpeg.input(temp_audio_path)
-            in_video = ffmpeg.input(str(video_path), ss=rd.randint(0,int(self.getDuration(video_path) - audio_duration)))
-            filtered = ffmpeg.filter(in_video, "trim", duration=audio_duration)
 
-            #crop = ffmpeg.crop(filtered, 380,0,400,650)
+            if(vduration > 0): 
 
-            stream = ffmpeg.concat(filtered, in_audio, v=1, a=1)
+                in_video = ffmpeg.input(str(video_path), ss=rd.randint(0,int(self.getDuration(video_path) - vduration)))
+                filtered = ffmpeg.filter(in_video, "trim", duration=vduration)
+
+            else: 
+                
+                in_video = ffmpeg.input(str(video_path), ss=rd.randint(0,int(self.getDuration(video_path) - audio_duration)))
+                filtered = ffmpeg.filter(in_video, "trim", duration=audio_duration)
+
+            org_probe = ffmpeg.probe(video_path)
+            org_width = org_probe['streams'][0]['width']
+            org_height = org_probe['streams'][0]['height']
+
+            x_offset = (org_width - width) // 2
+            y_offset = (org_height - height) // 2
+
+            if width > org_width or height > org_height:
+
+                raise ValueError("Given Dimension cannot be larger than the original video dimensions")
+            
+            crop = ffmpeg.crop(filtered, x_offset, y_offset, width, height)
+
+            stream = ffmpeg.concat(crop, in_audio, v=1, a=1)
             stream = ffmpeg.output(stream, f"{output_path}")
             stream = stream.global_args('-loglevel', 'warning')
 

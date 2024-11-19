@@ -53,6 +53,7 @@ OUTPUT_DIR.mkdir(exist_ok=True)
 # Mount static subdir to app
 
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
+app.mount("/output", StaticFiles(directory=str(OUTPUT_DIR)), name="output")
 
 
 class VideoProcessor:
@@ -94,11 +95,11 @@ class VideoProcessor:
         with open(audio_path, "rb") as f:
             audio_data = f.read()
 
-        video_number = rd.randint(1, 4) # Should be between 1 and total count of videos
+        video_number = rd.randint(1, vprocessor.get_placeholder_count())
 
         #print(f"{VIDEOS_DIR}/placeholder_{video_number}.mp4")
 
-        output_path = vprocessor.process_video(f"placeholder_{video_number}.mp4", audio_data, video_number)
+        output_path = vprocessor.process_video(f"placeholder_{video_number}.mp4", audio_data, video_number, self.video_length, self.video_height, self.video_width)
 
         #print(f"processed video saved to {output_path}")
         #print(f"{output_path}")
@@ -238,7 +239,7 @@ async def health_check():
         
         # Count available processed videos
 
-        video_count = sum(1 for _ in glob.glob(f"{VIDEOS_DIR}/*[1-5].*"))
+        video_count = sum(1 for _ in glob.glob(f"{VIDEOS_DIR}/*.mp4"))
         
         return {
             "status": "healthy",
@@ -256,18 +257,21 @@ async def health_check():
 
 # Utility endpoint to list available videos, broken
 
-@app.get("/api/videos/list")
+@app.get("/api/videos")
 
 async def list_videos():
 
     # List all available processed videos
 
-    try:
-        for f in glob.glob(f"{VIDEOS_DIR}/*[1-5].*"):
+    list = []
 
-            return {
-                "videos": f,
-            }
+    try:
+        for f in glob.glob("output/videos/*.mp4"):
+            list.append(f)
+
+        return {
+            "videos": list,
+        }
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

@@ -121,7 +121,7 @@ class VideoConsole {
 
             this.updateStatus('Sending request to server...');
 
-            const response = await fetch("http://192.168.1.9:7231/api/generate-video", {
+            const response = await fetch("http://mycoolapi.com:7231/api/generate-video", {
 
                 method: 'POST',
                 credentials: "include",
